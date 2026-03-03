@@ -8,44 +8,47 @@ const ResultGrid = () => {
 
 
     useEffect(() => {
-        const getData = async () => {
-            let data;
+        try {
+            const getData = async () => {
+                dispatch(setLoading())
+                let data = [];
 
-            if (activeTab == 'Photos') {
-                let response = await fetchPhotos(query)
-                data = response.results.map((items) => ({
-                    id: items.id,
-                    type: 'Photos',
-                    title: items.alt_description,
-                    thumbnail: items.urls.small,
-                    src: items.urls.full
+                if (activeTab == 'Photos') {
+                    let response = await fetchPhotos(query)
+                    data = response.results.map((items) => ({
+                        id: items.id,
+                        type: 'Photos',
+                        title: items.alt_description,
+                        thumbnail: items.urls.small,
+                        src: items.urls.full
 
-                }))
-                console.log(data);
+                    }))
+                    console.log(data);
+                }
+                if (activeTab == 'Videos') {
+                    let response = await fetchVideos(query)
+                    data = response.videos.map((items) => ({
+                        id: items.id,
+                        type: 'videos',
+                        title: items.user.name || 'video',
+                        thumbnail: items.image,
+                        src: items.video_files[0].link
+
+                    }))
+                    dispatch(setResult(data))
+                }
             }
-            if (activeTab == 'Videos') {
-                let response = await fetchVideos(query)
-                data = response.videos.map((items) => ({
-                    id: items.id,
-                    type: 'videos',
-                    title: items.user.name || 'video',
-                    thumbnail: items.image,
-                    src: items.video_files[0].link
+        } catch (error) {
+            dispatch(setError(error))
 
-                }))
-                console.log(data);
-            }
         }
-
         getData()
     }, [query, activeTab])
-
     return (
         <>
 
         </>
     )
-
 }
 
 export default ResultGrid
