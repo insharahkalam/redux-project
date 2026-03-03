@@ -1,26 +1,31 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActiveTabs } from '../Redux/Features/searchSlice'
 
 const Tabs = () => {
+
     const dispatch = useDispatch()
     const activeTab = useSelector((state) => state.search.activeTab)
-    const tabs = ['Photos', "Videos", 'Gifs']
+
+    const tabs = ['Photos', 'Videos']
+
     return (
-        <>
-            {tabs.map((elem, index) => {
-                return (
-                    <button onClick={() => dispatch(setActiveTabs(elem))}
-                        className={`${(activeTab === elem ? 'bg-red-500' : "bg-gray-500")} border rounded-lg py-2.5 px-6 text-lg font-serif font-bold ms-5 mt-5`}
-                        key={index}>{elem}
+        <div className="flex justify-center mt-8">
+            <div className="flex rounded-full bg-gray-800 p-1 gap-1">
+                {tabs.map((elem, index) => (
+                    <button
+                        key={index}
+                        onClick={() => dispatch(setActiveTabs(elem))}
+                        className={`rounded-full px-8 py-3 font-serif text-sm font-bold transition-all duration-200 capitalize
+                        ${activeTab === elem
+                                ? "bg-[#7C3BED] text-white shadow-md"
+                                : "text-gray-400 hover:text-white"
+                            }`}
+                    >
+                        {elem}
                     </button>
-
-
-                )
-            })}
-
-
-        </>
+                ))}
+            </div>
+        </div>
     )
 }
 
