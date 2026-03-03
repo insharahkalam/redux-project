@@ -9,18 +9,32 @@ const ResultGrid = () => {
 
     useEffect(() => {
         const getData = async () => {
-            let data
+            let data;
+
             if (activeTab == 'Photos') {
-                data = await fetchPhotos(query)
+                let response = await fetchPhotos(query)
+                data = response.results.map((items) => ({
+                    id: items.id,
+                    type: 'Photos',
+                    title: items.alt_description,
+                    thumbnail: items.urls.small,
+                    src: items.urls.full
+
+                }))
                 console.log(data);
-
-                if (activeTab == 'Videos') {
-                    data = await fetchVideos(query)
-                    console.log(data);
-
-                }
             }
+            if (activeTab == 'Videos') {
+                let response = await fetchVideos(query)
+                data = response.videos.map((items) => ({
+                    id: items.id,
+                    type: 'videos',
+                    title: items.user.name || 'video',
+                    thumbnail: items.image,
+                    src: items.video_files[0].link
 
+                }))
+                console.log(data);
+            }
         }
 
         getData()
@@ -28,7 +42,7 @@ const ResultGrid = () => {
 
     return (
         <>
-           
+
         </>
     )
 
