@@ -16,13 +16,13 @@ const SearchBar = () => {
 
     return (
         <div className="flex justify-center w-full">
-            <form 
+            <form
                 onSubmit={handleSubmitted}
                 className="flex w-full max-w-xl gap-2"
             >
                 <div className="relative flex-1">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-                    
+
                     <input
                         required
                         value={text}

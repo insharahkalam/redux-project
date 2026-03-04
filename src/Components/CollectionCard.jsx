@@ -1,17 +1,15 @@
-import { useDispatch } from "react-redux";
-import { addCollection, addTost } from "../Redux/Features/collectionSlice";
+import React from 'react'
+import { removeCollection, removeTost } from '../Redux/Features/collectionSlice'
+import { useDispatch } from 'react-redux'
 
-
-const ResultCard = ({ items }) => {
+const CollectionCard = ({ items }) => {
 
     const dispatch = useDispatch()
 
-    const addToCollection = (items) => {
-        console.log(items);
-        dispatch(addCollection(items))
-        dispatch(addTost())
+    const removeFromCollection = (item) => {
+        dispatch(removeCollection(item.id))
+        dispatch(removeTost())
     }
-
 
     return (
         <section className="relative rounded-xl overflow-hidden bg-gray-900 
@@ -44,10 +42,10 @@ const ResultCard = ({ items }) => {
                 </h1>
                 <button
                     onClick={() => {
-                        addToCollection(items)
+                        removeFromCollection(items)
                     }}
                     className="border rounded-lg px-4 cursor-pointer py-1">
-                    Save
+                    Remove
                 </button>
             </div>
 
@@ -56,4 +54,4 @@ const ResultCard = ({ items }) => {
     )
 }
 
-export default ResultCard
+export default CollectionCard
