@@ -1,11 +1,14 @@
 import { Link, useLocation } from "react-router-dom"
 
-const Navbar = () => {
+const Navbar = ({ name }) => {
 
     const location = useLocation()
 
     return (
-        <div className="flex justify-end px-4 pt-4 sm:px-8 sm:pt-6">
+        <div className="flex justify-between items-center px-4 pt-4 sm:px-8 sm:pt-6">
+
+            <h2 className='text-xl md:text-3xl font-bold font-serif'>{name}</h2>
+
             <div className="flex rounded-full bg-gray-800 p-1 gap-1">
 
                 <Link

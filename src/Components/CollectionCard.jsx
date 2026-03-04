@@ -6,8 +6,8 @@ const CollectionCard = ({ items }) => {
 
     const dispatch = useDispatch()
 
-    const removeFromCollection = (item) => {
-        dispatch(removeCollection(item.id))
+    const removeFromCollection = (items) => {
+        dispatch(removeCollection(items.id))
         dispatch(removeTost())
     }
 
