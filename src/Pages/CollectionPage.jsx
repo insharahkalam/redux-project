@@ -13,7 +13,7 @@ const CollectionPage = () => {
 
             {collection.length > 0 ?
                 <>
-                    <Navbar name='Your Collection' />
+                    <Navbar name='Your' name2='Collection' />
                     <div className='flex justify-end'>
                         <button
                             onClick={() => dispatch(clearCollection())}
@@ -28,9 +28,9 @@ const CollectionPage = () => {
                 </div>}
 
 
-            <div className="mx-auto max-w-6xl pb-20 ">
+            <div className=" px-8 mx-auto max-w-6xl pb-20 ">
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
                     {collection.map((items, index) => {
                         return <div key={index}>
                             <CollectionCard items={items} />

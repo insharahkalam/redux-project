@@ -1,13 +1,15 @@
 import { Link, useLocation } from "react-router-dom"
 
-const Navbar = ({ name }) => {
+const Navbar = ({ name, name2 }) => {
 
     const location = useLocation()
 
     return (
         <div className="flex justify-between items-center px-4 pt-4 sm:px-8 sm:pt-6">
 
-            <h2 className='text-xl md:text-3xl font-bold font-serif'>{name}</h2>
+            <h1 className="text-xl sm:text-3xl tracking-wide font-serif font-bold mb-3">
+                {name}<span className="text-[#7C3BED]"> {name2}</span>
+            </h1>
 
             <div className="flex rounded-full bg-gray-800 p-1 gap-1">
 

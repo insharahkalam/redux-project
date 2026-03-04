@@ -57,8 +57,8 @@ const ResultGrid = () => {
     if (loading) return <h1 className="text-center mx-auto my-10 loader text-white"></h1>
 
     return (
-        <div className="mx-auto max-w-6xl px-4 pb-20 mt-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="px-8 mx-auto pb-20 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
                 {result.map((items, indx) => (
                     <ResultCard key={indx} items={items} />
                 ))}

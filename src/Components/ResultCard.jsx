@@ -15,7 +15,7 @@ const ResultCard = ({ items }) => {
 
     return (
         <section className="relative rounded-xl overflow-hidden bg-gray-900 
-        shadow-lg hover:scale-105 transition-all duration-300">
+        hover:shadow-sm shadow-[#7C3BED] hover:scale-103 transition-all duration-300">
 
             <a target="_blank" href={items.urls} className="block h-80">
 
